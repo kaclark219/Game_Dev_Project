@@ -9,8 +9,6 @@ public class PlayerMovement : MonoBehaviour
     private float speed = 5.0f;
     private Rigidbody2D rb;
 
-    private bool InteractorEnabled = true;
-
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -22,8 +20,4 @@ public class PlayerMovement : MonoBehaviour
         dir = Vector3.Normalize(dir);
         rb.velocity = dir * speed;
     }
-
-    public void EnableInteractor() { InteractorEnabled = true; }
-
-    public void DisableInteractor() { InteractorEnabled = false; }
 }

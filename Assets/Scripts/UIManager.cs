@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject InventoryUI;
     [Space]
     [SerializeField] private PlayerMovement PlayerMovement;
+    [SerializeField] private PlayerInteractor PlayerInteractor;
 
     private void Start()
     {
@@ -24,59 +25,51 @@ public class UIManager : MonoBehaviour
         DialogUI.SetActive(false);
         PauseUI.SetActive(false);
         InventoryUI.SetActive(false);
-        DisableMovement();
-        DisableInteract();
+        DisablePlayer();
     }
 
     public void StartGame()
     {
         MainMenu.SetActive(false);
         HUD.SetActive(true);
-        EnableMovement();
-        DisableInteract();
+        EnablePlayer();
     }
 
 
     public void OpenDialogue()
     {
         DialogUI.SetActive(true);
-        DisableMovement();
-        DisableInteract();
+        DisablePlayer();
     }
 
     public void CloseDialogue()
     {
         DialogUI.SetActive(false);
-        EnableMovement();
-        EnableInteract();
+        EnablePlayer();
     }
 
     public void OpenPause()
     {
         PauseUI.SetActive(true);
-        DisableMovement();
-        DisableInteract();
+        DisablePlayer();
     }
 
     public void ClosePause()
     {
         PauseUI.SetActive(false);
-        EnableMovement();
-        EnableInteract();
+        EnablePlayer();
     }
 
     public void OpenInventory()
     {
         InventoryUI.SetActive(true);
-        DisableMovement();
-        DisableInteract();
+        DisablePlayer();
     }
 
     public void CloseInventory()
     {
         InventoryUI.SetActive(false);
-        EnableMovement();
-        EnableInteract();
+        EnablePlayer();
     }
 
     public void QuitApp()
@@ -84,22 +77,15 @@ public class UIManager : MonoBehaviour
         Application.Quit();
     }
 
-    private void EnableMovement()
+    private void EnablePlayer()
     {
         PlayerMovement.enabled = true;
+        PlayerInteractor.enabled = true;
     }
-    private void DisableMovement()
+    private void DisablePlayer()
     {
         PlayerMovement.enabled = false;
+        PlayerInteractor.enabled = false;
     }
 
-    private void EnableInteract()
-    {
-        PlayerMovement.EnableInteractor();
-    }
-
-    private void DisableInteract()
-    {
-        PlayerMovement.DisableInteractor();
-    }
 }
