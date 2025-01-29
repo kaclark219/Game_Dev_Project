@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] private Vector2 dir;
+
     private float speed = 5.0f;
     private Rigidbody2D rb;
-    [SerializeField] private Vector2 dir;
+
+    private bool InteractorEnabled = true;
 
     void Start()
     {
@@ -19,4 +22,8 @@ public class PlayerMovement : MonoBehaviour
         dir = Vector3.Normalize(dir);
         rb.velocity = dir * speed;
     }
+
+    public void EnableInteractor() { InteractorEnabled = true; }
+
+    public void DisableInteractor() { InteractorEnabled = false; }
 }
