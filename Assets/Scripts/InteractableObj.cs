@@ -27,7 +27,7 @@ public class InteractableObj : MonoBehaviour
             else if (Input.GetKeyUp(KeyCode.E))
             {
                 keyPressed = false;
-                EndInteraction();    
+                EndInteraction();
             }
         }
     }
@@ -52,12 +52,12 @@ public class InteractableObj : MonoBehaviour
     virtual public void StartInteraction()
     {
         Debug.Log("Start");
+
     }
 
     virtual public void EndInteraction()
     {
         Debug.Log("End");
     }
-
 
 }
