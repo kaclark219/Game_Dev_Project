@@ -6,46 +6,37 @@ public class InteractableObj : MonoBehaviour
 {
 
     [SerializeField] private GameObject Popup;
-    public bool PressAndHold = false;
-    private bool interacting = false;
-    private bool keyPressed = false;
+    public bool active = false;
+    [SerializeField] private PlayerInteractor plint;
+    public float frame = 0;
 
     private void Start()
     {
         Popup.SetActive(false);
-    }
-
-    private void Update()
-    {
-        if (interacting)
-        {
-            if (Input.GetKeyDown(KeyCode.E) && !keyPressed)
-            {
-                keyPressed = true;
-                StartInteraction();
-            }
-            else if (Input.GetKeyUp(KeyCode.E))
-            {
-                keyPressed = false;
-                EndInteraction();
-            }
-        }
+        plint = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerInteractor>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") && collision.gameObject.GetComponent<PlayerInteractor>().enabled)
         {
-            Popup.SetActive(true);
-            interacting = true;
+            plint.list.Add(this);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
+            plint.list.Remove(this);
+            active = false;
+        }
+    }
+
+    void Update(){
+        if(active){
+            Popup.SetActive(true);
+        }else{
             Popup.SetActive(false);
-            interacting = false;
         }
     }
 
