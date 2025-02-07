@@ -16,23 +16,6 @@ public class InteractableObj : MonoBehaviour
         plint = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerInteractor>();
     }
 
-    private void Update()
-    {
-        if (interacting)
-        {
-            if (Input.GetKeyDown(KeyCode.E) && !keyPressed)
-            {
-                keyPressed = true;
-                StartInteraction();
-            }
-            else if (Input.GetKeyUp(KeyCode.E))
-            {
-                keyPressed = false;
-                EndInteraction();
-            }
-        }
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") && collision.gameObject.GetComponent<PlayerInteractor>().enabled)
