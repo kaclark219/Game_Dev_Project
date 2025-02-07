@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class InteractableObj : MonoBehaviour
 {
+
     [SerializeField] private GameObject Popup;
     public bool active = false;
     [SerializeField] private PlayerInteractor plint;
@@ -13,6 +14,23 @@ public class InteractableObj : MonoBehaviour
     {
         Popup.SetActive(false);
         plint = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerInteractor>();
+    }
+
+    private void Update()
+    {
+        if (interacting)
+        {
+            if (Input.GetKeyDown(KeyCode.E) && !keyPressed)
+            {
+                keyPressed = true;
+                StartInteraction();
+            }
+            else if (Input.GetKeyUp(KeyCode.E))
+            {
+                keyPressed = false;
+                EndInteraction();
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -38,4 +56,16 @@ public class InteractableObj : MonoBehaviour
             Popup.SetActive(false);
         }
     }
+
+    virtual public void StartInteraction()
+    {
+        Debug.Log("Start");
+
+    }
+
+    virtual public void EndInteraction()
+    {
+        Debug.Log("End");
+    }
+
 }
