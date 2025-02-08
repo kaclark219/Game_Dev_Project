@@ -12,11 +12,7 @@ public class NPCPortrait : MonoBehaviour
 
     public bool IsShowing { get; private set; }
 
-    private NPCMoods _moods;
-
-    private float _offScreenX;
-
-    private float _onScreenX;
+    private NPCMoods Moods;
 
     public void Init(NPCName name, NPCPosition position, NPCMood mood, NPCMoods moods)
     {
@@ -24,7 +20,7 @@ public class NPCPortrait : MonoBehaviour
         Position = position;
         Mood = mood;
 
-        _moods = moods;
+        Moods = moods;
 
         Show();
     }
@@ -50,7 +46,7 @@ public class NPCPortrait : MonoBehaviour
     }
     private void UpdateSprite()
     {
-        var sprite = _moods.GetMoodSprite(Mood);
+        var sprite = Moods.GetMoodSprite(Mood);
         var image = GetComponent<Image>();
 
         image.sprite = sprite;

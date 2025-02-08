@@ -91,7 +91,7 @@ public class InkManager : MonoBehaviour
     }
 
     // Coroutine to slowly print each character in a line.
-    IEnumerator PrintLine()
+    private IEnumerator PrintLine()
     {
         foreach (char c in text)
         {
@@ -158,7 +158,7 @@ public class InkManager : MonoBehaviour
         }
     }
 
-    Button CreateChoiceButton(string text)
+    private Button CreateChoiceButton(string text)
     {
         Button button = Instantiate(ChoiceButtonPrefab);
         button.GetComponentInChildren<TextMeshProUGUI>().text = text;
