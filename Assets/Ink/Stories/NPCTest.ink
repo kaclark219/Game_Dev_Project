@@ -1,11 +1,6 @@
 INCLUDE Globals.ink
 
-// External Functions (defined in Unity)
-EXTERNAL ShowCharacter(characterName, position, mood) 
-EXTERNAL HideCharacter(characterName)
-EXTERNAL ChangeMood(characterName, mood)
-
-// Variable Trust is from Globals.ink
+// Variable Trust & Functions are from Globals.ink
 
 -> start
 

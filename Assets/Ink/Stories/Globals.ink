@@ -4,7 +4,7 @@
 // Test variable
 VAR Trust = 0
 
-
+//******************************************************************//
 // Town Suspicion 
 VAR Suspicion = 0
 
@@ -21,3 +21,7 @@ VAR LindaTrust = 0
 VAR JeremyTrust = 0
 
 
+// Global Functions
+EXTERNAL ShowCharacter(characterName, position, mood) 
+EXTERNAL HideCharacter(characterName)
+EXTERNAL ChangeMood(characterName, mood)

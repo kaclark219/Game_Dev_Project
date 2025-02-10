@@ -8,7 +8,7 @@ using Story = Ink.Runtime.Story;
 
 public class InkManager : MonoBehaviour
 {
-    [SerializeField] private NPCManager NPCManager;
+    [SerializeField] private NPCDialogueManager NPCManager;
     [SerializeField] private TextAsset LoadGlobalsJSON;
     [SerializeField] private TextAsset InkJsonAsset;
     [SerializeField] private Story Story;
@@ -28,7 +28,7 @@ public class InkManager : MonoBehaviour
     private void Start()
     {
         DialogueVariables = new DialogueVariables(LoadGlobalsJSON);
-        NPCManager = FindObjectOfType<NPCManager>();    
+        NPCManager = FindObjectOfType<NPCDialogueManager>();    
         StartStory();
     }
 

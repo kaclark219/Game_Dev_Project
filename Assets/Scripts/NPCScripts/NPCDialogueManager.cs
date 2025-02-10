@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-public class NPCManager : MonoBehaviour
+public class NPCDialogueManager : MonoBehaviour
 {
     private List<NPCPortrait> NPCs;
     [SerializeField] private GameObject NPCPrefab;
