@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class InteractableObj : MonoBehaviour
 {
+
     [SerializeField] private GameObject Popup;
     public bool active = false;
     [SerializeField] private PlayerInteractor plint;
