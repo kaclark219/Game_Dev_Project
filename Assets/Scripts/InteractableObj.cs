@@ -31,11 +31,14 @@ public class InteractableObj : MonoBehaviour
         }
     }
 
-    void Update(){
-        if(active){
+    void Update()
+    {
+        if (active){
             Popup.SetActive(true);
         }else{
             Popup.SetActive(false);
         }
     }
+
+    public virtual void OnInteract(){}
 }
