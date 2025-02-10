@@ -32,23 +32,14 @@ public class InteractableObj : MonoBehaviour
         }
     }
 
-    void Update(){
-        if(active){
+    void Update()
+    {
+        if (active){
             Popup.SetActive(true);
         }else{
             Popup.SetActive(false);
         }
     }
 
-    virtual public void StartInteraction()
-    {
-        Debug.Log("Start");
-
-    }
-
-    virtual public void EndInteraction()
-    {
-        Debug.Log("End");
-    }
-
+    public virtual void OnInteract(){}
 }
