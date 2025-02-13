@@ -2,21 +2,55 @@ using System.Collections.Generic;
 using UnityEngine;
 using Ink.Runtime;
 
-public class DialogueVariables
+public class DialogueVariables : MonoBehaviour 
 {
     public Dictionary<string, Ink.Runtime.Object> variables { get; private set; }
+    [SerializeField] private TextAsset LoadGlobalsJSON;
 
-    public DialogueVariables(TextAsset LoadGlobalsJSON)
+    private Story GlobalStory;
+    private const string saveVariablesKey = "INK_VARIABLES";
+
+    private void Start()
     {
-        Story GlobalStory = new Story(LoadGlobalsJSON.text);
+        GlobalStory = new Story(LoadGlobalsJSON.text);
         variables = new Dictionary<string, Ink.Runtime.Object>();
+
+        LoadData();
+
         foreach (string name in GlobalStory.variablesState)
         {
             Ink.Runtime.Object value = GlobalStory.variablesState.GetVariableWithName(name);
             variables.Add(name, value);
-            Debug.Log("Initialized global dialogue variable: " + name + " = " + value);
+            // Debug.Log("Initialized global dialogue variable: " + name + " = " + value);
         }
     }
+
+    public void SaveData()
+    {
+        if (GlobalStory != null) {
+            VariablesToStory(GlobalStory);  // Load current state of all variables
+            PlayerPrefs.SetString(saveVariablesKey, GlobalStory.state.ToJson());  // saves data
+        }
+    }
+
+    public void LoadData()
+    {
+        if (PlayerPrefs.HasKey(saveVariablesKey))   // check if there is saved data, load it
+        {
+            string state = PlayerPrefs.GetString(saveVariablesKey);
+            GlobalStory.state.LoadJson(state);
+        }
+    }
+    public void ResetData()
+    {
+        foreach (KeyValuePair<string, Ink.Runtime.Object> var in variables)
+        {
+            variables.Remove(var.Key);
+            variables.Add(var.Key, null);
+            VariablesToStory(GlobalStory);
+        }
+    }
+
     public void StartListening(Story story)
     {
         VariablesToStory(story);
@@ -34,9 +68,11 @@ public class DialogueVariables
         {
             variables.Remove(name);
             variables.Add(name, value);
+            Debug.Log("Variable Updated: " + name + " = " + value);
         }
     }
 
+    // Updates all variable changes to the dictionary to the Ink Story
     private void VariablesToStory(Story story)
     {
         foreach(KeyValuePair<string, Ink.Runtime.Object> var in variables)
@@ -44,4 +80,16 @@ public class DialogueVariables
             story.variablesState.SetGlobal(var.Key, var.Value);  
         }
     }
+
+    public Ink.Runtime.Object GetVariableState(string name)
+    {
+        Ink.Runtime.Object variableValue = null;
+        variables.TryGetValue(name, out variableValue);
+        if (variableValue != null)
+        {
+            Debug.Log("Ink variable was found to be null: " + name);
+        }
+        return variableValue;
+    }
 }
+

@@ -20,6 +20,9 @@ VAR PoppyTrust = 0
 VAR LindaTrust = 0
 VAR JeremyTrust = 0
 
+// Player Name
+VAR PlayerName = "Y/N"
+
 
 // Global Functions
 EXTERNAL ShowCharacter(characterName, position, mood) 
