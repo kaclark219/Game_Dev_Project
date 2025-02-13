@@ -8,7 +8,7 @@ INCLUDE Globals.ink
 Voldemart and his death eaters wait eagerly in the Dark Forest... #thought
 {ShowCharacter("Gerald", "Right", "Sad")}
 I thought he would come.
-...
+... {PlayerName}
 {ShowCharacter("Player", "Left", "Sad")}
 Harry Potter enters the clearing... #thought
 {ChangeMood("Gerald", "Happy")}

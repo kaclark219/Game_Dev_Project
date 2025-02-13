@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,7 +10,6 @@ using Story = Ink.Runtime.Story;
 public class InkManager : MonoBehaviour
 {
     [SerializeField] private NPCDialogueManager NPCManager;
-    [SerializeField] private TextAsset LoadGlobalsJSON;
     [SerializeField] private TextAsset InkJsonAsset;
     [SerializeField] private Story Story;
 
@@ -20,14 +20,17 @@ public class InkManager : MonoBehaviour
 
     [SerializeField] private Button ChoiceButtonPrefab;
 
-    private DialogueVariables DialogueVariables;
+    [SerializeField] private DialogueVariables DialogueVariables;
 
     private Coroutine PrintCoroutine = null;
     private string text;
 
     private void Start()
     {
-        DialogueVariables = new DialogueVariables(LoadGlobalsJSON);
+        if (DialogueVariables == null)
+        {
+            GetComponent<DialogueVariables>();
+        }
         NPCManager = FindObjectOfType<NPCDialogueManager>();    
         StartStory();
     }
@@ -51,6 +54,18 @@ public class InkManager : MonoBehaviour
         DisplayNextLine();
     }
 
+    public void StartStory(TextAsset newStory)
+    {
+        InkJsonAsset = newStory;
+        Story = new Story(InkJsonAsset.text);
+        // Connects function calls in Ink file with function calls in Unity
+        Story.BindExternalFunction("ShowCharacter", (string name, string position, string mood) => NPCManager.ShowCharacter(name, position, mood));
+        Story.BindExternalFunction("HideCharacter", (string name) => NPCManager.HideCharacter(name));
+        Story.BindExternalFunction("ChangeMood", (string name, string mood) => NPCManager.ChangeMood(name, mood));
+        DialogueVariables.StartListening(Story);
+        DisplayNextLine();
+    }
+
     private void EndStory()
     {
         Debug.Log("Exiting Dialogue");
@@ -65,7 +80,7 @@ public class InkManager : MonoBehaviour
         if (PrintCoroutine != null)
         {
             StopCoroutine(PrintCoroutine);
-            TextBox.text = text;
+            TextBox.maxVisibleCharacters = text.Length;
             PrintCoroutine = null;
             return;
         }
@@ -74,10 +89,16 @@ public class InkManager : MonoBehaviour
         {
             text = Story.Continue();
             text = text?.Trim();
-            TextBox.text = "";
-            ApplyStyling();
+            if (text == "")
+            {
+                DisplayNextLine();
+            }
+            else
+            {
+                ApplyStyling();
 
-            PrintCoroutine = StartCoroutine(PrintLine());
+                PrintCoroutine = StartCoroutine(PrintLine());
+            }
         }
         else if (Story.currentChoices.Count > 0)
         {
@@ -93,9 +114,11 @@ public class InkManager : MonoBehaviour
     // Coroutine to slowly print each character in a line.
     private IEnumerator PrintLine()
     {
+        TextBox.text = text;
+        TextBox.maxVisibleCharacters = 0;
         foreach (char c in text)
         {
-            TextBox.text += c;
+            TextBox.maxVisibleCharacters++;
             yield return new WaitForSeconds(0.05f);
         }
         PrintCoroutine = null;
@@ -111,17 +134,6 @@ public class InkManager : MonoBehaviour
         {
             TextBox.fontStyle= FontStyles.Normal;
         }
-    }
-
-    public Ink.Runtime.Object GetVariableState(string name)
-    {
-        Ink.Runtime.Object variableValue = null;
-        DialogueVariables.variables.TryGetValue(name, out variableValue);
-        if (variableValue != null)
-        {
-            Debug.Log("Ink variable was found to be null: " + name);
-        }
-        return variableValue;
     }
 
     #region CHOICES_FUNCTIONS

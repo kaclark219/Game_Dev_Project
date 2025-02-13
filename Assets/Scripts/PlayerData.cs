@@ -4,42 +4,88 @@ using UnityEngine;
 
 public class PlayerData : MonoBehaviour
 {
-    private int Money;
-    private int Energy;
-    private int Suspicion;
+    private string playerName = "";
+    private int money = 0;
+    private int energy = 100;
+
+    private const string nameKey = "PLAYER_NAME";
+    private const string moneyKey = "MONEY";
+    private const string energyKey = "Energy";
 
     void Start()
     {
-        Money = 100;
-        Energy = 100;
-        Suspicion = 0;
+        LoadData();
     }
 
     public int GetMoney()
     {
-        return Money;
+        return money;
     }
     public void ModifyMoney(int amount)
     {
-        Money += amount;
+        money += amount;
     }
     
     public int GetEnergy()
     {
-        return Energy;
+        return energy;
     }
     public void ModifyEnergy(int amount)
     {
-        Energy += amount;
+        energy += amount;
     }
 
-    public int GetSuspicion() 
-    { 
-        return Suspicion; 
+    public string GetName()
+    {
+        return playerName;
     }
-    public void ModifySuspicion(int amount) 
-    { 
-        Suspicion += amount; 
+    public void SetName(string name)
+    {
+        playerName = name;
+    }   
+
+    public void SaveData()
+    {
+        PlayerPrefs.SetString(nameKey, playerName); 
+        PlayerPrefs.SetInt(moneyKey, money);
+        PlayerPrefs.SetInt(energyKey, energy);
+    }
+
+    public void LoadData()
+    {
+        if (PlayerPrefs.HasKey(nameKey))
+        {
+            playerName = PlayerPrefs.GetString(nameKey);
+        }
+        else
+        {
+            playerName = "";
+        }
+
+        if (PlayerPrefs.HasKey(moneyKey))
+        {
+            money = PlayerPrefs.GetInt(moneyKey);
+        }
+        else
+        {
+            money = 0;
+        }
+
+        if(PlayerPrefs.HasKey(energyKey))
+        {
+            energy = PlayerPrefs.GetInt(energyKey);
+        }
+        else
+        {
+            energy = 0;
+        }
+    }
+
+    public void ResetData()
+    {
+        playerName = "";
+        money = 0;
+        energy = 100;
     }
 
 }

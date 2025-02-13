@@ -365,6 +365,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8155133626211823805}
   - component: {fileID: 73936958663317257}
+  - component: {fileID: 5934105558860872651}
   m_Layer: 0
   m_Name: InkManager
   m_TagString: Untagged
@@ -401,12 +402,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NPCManager: {fileID: 3375363349238811594}
-  LoadGlobalsJSON: {fileID: 4900000, guid: e96663ac38943ab46a135f3f3ce5373c, type: 3}
-  InkJsonAsset: {fileID: 4900000, guid: ef5edff4f76f6414e86c74ae951a2b0b, type: 3}
+  InkJsonAsset: {fileID: 4900000, guid: c22bbeb263db6374ead80cb2bacc8a33, type: 3}
   UI: {fileID: 4290797969028764368}
   TextBox: {fileID: 5194023188226748170}
   ChoiceButtonContainer: {fileID: 3753047508734703370}
   ChoiceButtonPrefab: {fileID: 6097296940185953949, guid: 7d27a6f0e87402444905bd23e4e9d10d, type: 3}
+  DialogueVariables: {fileID: 5934105558860872651}
+--- !u!114 &5934105558860872651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6360180090440216539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9d267087b7b92448a7f63cb379e24e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LoadGlobalsJSON: {fileID: 4900000, guid: e96663ac38943ab46a135f3f3ce5373c, type: 3}
 --- !u!1 &8441651068179102444
 GameObject:
   m_ObjectHideFlags: 0
