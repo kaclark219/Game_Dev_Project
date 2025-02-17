@@ -8,9 +8,7 @@ INCLUDE Globals.ink
 * [No.] -> NoBoxes
 
 === YesBoxes ===
-~CharlieTrust -= 10
-{HideCharacter("Charlie")} {ShowCharacter("Player", "Right", "Normal")} 
-Um .. I guess? Do you need them or something? You're kind of quick to ask me a favor.
+{HideCharacter("Charlie")} {ShowCharacter("Player", "Right", "Normal")} Um .. I guess? Do you need them or something? You're kind of quick to ask me a favor.
 {HideCharacter("Player")} {ShowCharacter("Charlie", "Right", "Suspicious")} Well, I guess you couldn't tell by my outfit, but I was offering to help you get rid of them. Y'know? Sanitation? It's kind of my job.
 {HideCharacter("Charlie")} {ShowCharacter("Player", "Right", "Normal")} Oh, I'm sorry. I didn't mean to assume anything.
 {HideCharacter("Player")} {ShowCharacter("Charlie", "Right", "Normal")} Don't worry too much about it. Anyway, I'm Charlie. I'll see you around, alright?
