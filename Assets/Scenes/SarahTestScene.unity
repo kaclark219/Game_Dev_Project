@@ -310,7 +310,6 @@ GameObject:
   m_Component:
   - component: {fileID: 194885385}
   - component: {fileID: 194885387}
-  - component: {fileID: 194885386}
   m_Layer: 0
   m_Name: Trigger
   m_TagString: Untagged
@@ -333,22 +332,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 160675812}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &194885386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 194885384}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0627a0c29b52604a8b083fa8d69ee85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Popup: {fileID: 1700635389}
-  active: 0
-  plint: {fileID: 0}
-  frame: 0
 --- !u!61 &194885387
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1324,17 +1307,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1919077877 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5934105558860872651, guid: e5f77980b6ffce54591d8ea3551e8e47, type: 3}
-  m_PrefabInstance: {fileID: 7909802698890227158}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9d267087b7b92448a7f63cb379e24e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1955001194
 GameObject:
   m_ObjectHideFlags: 0
@@ -1841,7 +1813,7 @@ PrefabInstance:
     - target: {fileID: 6271288331911556575, guid: 26a91b98de179714094b3966759ff6d1, type: 3}
       propertyPath: dialogueVariables
       value: 
-      objectReference: {fileID: 1919077877}
+      objectReference: {fileID: 0}
     - target: {fileID: 7784065872797929323, guid: 26a91b98de179714094b3966759ff6d1, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -1851,7 +1823,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26a91b98de179714094b3966759ff6d1, type: 3}
---- !u!1001 &7909802698890227158
+--- !u!1001 &6280007450040469303
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1915,5 +1887,5 @@ SceneRoots:
   - {fileID: 1434135466}
   - {fileID: 904890359}
   - {fileID: 1955001195}
-  - {fileID: 7909802698890227158}
   - {fileID: 71950826846358832}
+  - {fileID: 6280007450040469303}
