@@ -32,20 +32,12 @@ public class InkManager : MonoBehaviour
             GetComponent<DialogueVariables>();
         }
         NPCManager = FindObjectOfType<NPCDialogueManager>();    
-        StartStory();
     }
-
-    public void StartDialogue(TextAsset textAsset)
-    {
-        Debug.Log("Starting Dialogue");
-        InkJsonAsset = textAsset;
-        StartStory();
-        UI.SetActive(true);
-    }
-
     private void StartStory()
     {
         Story = new Story(InkJsonAsset.text);
+        UI.SetActive(true);
+
         // Connects function calls in Ink file with function calls in Unity
         Story.BindExternalFunction("ShowCharacter", (string name, string position, string mood) => NPCManager.ShowCharacter(name, position, mood));
         Story.BindExternalFunction("HideCharacter", (string name) => NPCManager.HideCharacter(name));
@@ -58,6 +50,8 @@ public class InkManager : MonoBehaviour
     {
         InkJsonAsset = newStory;
         Story = new Story(InkJsonAsset.text);
+        UI.SetActive(true);
+
         // Connects function calls in Ink file with function calls in Unity
         Story.BindExternalFunction("ShowCharacter", (string name, string position, string mood) => NPCManager.ShowCharacter(name, position, mood));
         Story.BindExternalFunction("HideCharacter", (string name) => NPCManager.HideCharacter(name));

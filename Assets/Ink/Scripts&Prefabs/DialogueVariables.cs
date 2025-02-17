@@ -15,8 +15,6 @@ public class DialogueVariables : MonoBehaviour
         GlobalStory = new Story(LoadGlobalsJSON.text);
         variables = new Dictionary<string, Ink.Runtime.Object>();
 
-        LoadData();
-
         foreach (string name in GlobalStory.variablesState)
         {
             Ink.Runtime.Object value = GlobalStory.variablesState.GetVariableWithName(name);
@@ -35,6 +33,9 @@ public class DialogueVariables : MonoBehaviour
 
     public void LoadData()
     {
+        if (GlobalStory == null) {
+            GlobalStory = new Story(LoadGlobalsJSON.text);
+        }
         if (PlayerPrefs.HasKey(saveVariablesKey))   // check if there is saved data, load it
         {
             string state = PlayerPrefs.GetString(saveVariablesKey);
@@ -75,9 +76,12 @@ public class DialogueVariables : MonoBehaviour
     // Updates all variable changes to the dictionary to the Ink Story
     private void VariablesToStory(Story story)
     {
-        foreach(KeyValuePair<string, Ink.Runtime.Object> var in variables)
+        if (variables != null)
         {
-            story.variablesState.SetGlobal(var.Key, var.Value);  
+            foreach (KeyValuePair<string, Ink.Runtime.Object> var in variables)
+            {
+                story.variablesState.SetGlobal(var.Key, var.Value);
+            }
         }
     }
 
