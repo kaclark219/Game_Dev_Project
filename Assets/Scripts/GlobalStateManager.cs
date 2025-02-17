@@ -9,7 +9,6 @@ public class GlobalStateManager : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("Loading Data...");
         LoadAllData();
     }
 
@@ -21,7 +20,9 @@ public class GlobalStateManager : MonoBehaviour
 
     public void LoadAllData()
     {
+        Debug.Log("Loading Data...");
         playerData.LoadData();
+        dialogueVariables.LoadData();
     }
 
     public void ResetAllData()
