@@ -36,6 +36,9 @@ public class InteractableObj : MonoBehaviour
     {
         if (active){
             Popup.SetActive(true);
+            if(Input.GetKeyDown(KeyCode.E)){
+                OnInteract();
+            }
         }else{
             Popup.SetActive(false);
         }

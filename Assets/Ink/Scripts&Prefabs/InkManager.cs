@@ -82,6 +82,7 @@ public class InkManager : MonoBehaviour
         if (Story.canContinue)
         {
             text = Story.Continue();
+            Debug.Log(text);
             text = text?.Trim();
             if (text == "")
             {
