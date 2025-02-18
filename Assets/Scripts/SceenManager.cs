@@ -33,17 +33,7 @@ public class ScreenManager : MonoBehaviour
         //main_menu.SetActive(false); 
         //credits_screen.SetActive(true); 
     }
-
-    //Go to Main Scene (for Pause Menu)
-    public void MainScene()
-    {
-        title_screen.SetActive(false);
-        credits_screen.SetActive(false);
-        main_menu.SetActive(true);
-
-        SceneManager.LoadScene("Nandni_Menu");
-    }
-
+  
     //Go to Main Page 
     public void MainPage()
     {
@@ -55,7 +45,7 @@ public class ScreenManager : MonoBehaviour
     //Load Saved Game
     public void LoadGame()
     {
-
+        //need to access save system
     }
 
     //Quit Application
