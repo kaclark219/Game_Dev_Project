@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class PlayerData : MonoBehaviour
 {
+    [SerializeField] private DayNightCycle dayNightCycle;
+
     private string playerName = "";
     private int money = 0;
     private int energy = 100;
 
     private const string nameKey = "PLAYER_NAME";
     private const string moneyKey = "MONEY";
-    private const string energyKey = "Energy";
 
     void Start()
     {
         LoadData();
+        ModifyEnergy(100);
     }
 
     public int GetMoney()
@@ -33,6 +35,7 @@ public class PlayerData : MonoBehaviour
     public void ModifyEnergy(int amount)
     {
         energy += amount;
+        dayNightCycle.UpdateLight(energy);
     }
 
     public string GetName()
@@ -48,7 +51,6 @@ public class PlayerData : MonoBehaviour
     {
         PlayerPrefs.SetString(nameKey, playerName); 
         PlayerPrefs.SetInt(moneyKey, money);
-        PlayerPrefs.SetInt(energyKey, energy);
     }
 
     public void LoadData()
@@ -69,15 +71,6 @@ public class PlayerData : MonoBehaviour
         else
         {
             money = 0;
-        }
-
-        if(PlayerPrefs.HasKey(energyKey))
-        {
-            energy = PlayerPrefs.GetInt(energyKey);
-        }
-        else
-        {
-            energy = 0;
         }
     }
 

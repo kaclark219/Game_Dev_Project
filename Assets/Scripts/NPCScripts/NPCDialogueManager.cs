@@ -33,17 +33,17 @@ public class NPCDialogueManager : MonoBehaviour
 
         if (character == null)
         {
-            var characterObject = Instantiate(NPCPrefab, gameObject.transform, false);
+            GameObject characterObject;
             switch (position)
             {
                 case NPCPosition.Left:
-                    characterObject.transform.position = leftLocation.position;
+                    characterObject = Instantiate(NPCPrefab, leftLocation.transform, false);
                     break;
                 case NPCPosition.Right:
-                    characterObject.transform.position = rightLocation.position;
+                    characterObject = Instantiate(NPCPrefab, rightLocation.transform, false);
                     break;
                 case NPCPosition.Center:
-                    characterObject.transform.position = centerLocation.position;
+                    characterObject = Instantiate(NPCPrefab, centerLocation.transform, false);
                     break;
                 default:
                     Debug.LogError("Invalid NPC Position");
