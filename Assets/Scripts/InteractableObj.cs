@@ -7,10 +7,10 @@ public class InteractableObj : MonoBehaviour
 
     [SerializeField] private GameObject Popup;
     public bool active = false;
-    [SerializeField] private PlayerInteractor plint;
+    [SerializeField] protected PlayerInteractor plint;
     public float frame = 0;
 
-    private void Start()
+    protected void Start()
     {
         Popup.SetActive(false);
         plint = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerInteractor>();
