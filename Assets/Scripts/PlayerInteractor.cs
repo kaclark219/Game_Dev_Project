@@ -7,10 +7,12 @@ public class PlayerInteractor : MonoBehaviour
     // Logic when interacting with stuff that'll affect player data
     public List<InteractableObj> list = new List<InteractableObj>();
     private Rigidbody2D rb;
+    public PlayerMovement pm;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        pm = GetComponent<PlayerMovement>();
     }
 
     void Update(){
