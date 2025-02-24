@@ -388,6 +388,8 @@ GameObject:
   - component: {fileID: 1287931932733010306}
   - component: {fileID: 8427644275910128803}
   - component: {fileID: 5941182217501235346}
+  - component: {fileID: 5979394386717294336}
+  - component: {fileID: 3697799267430201851}
   m_Layer: 0
   m_Name: NPCData
   m_TagString: Untagged
@@ -427,8 +429,8 @@ MonoBehaviour:
   centerLocation: {fileID: 6307946770799632948}
   rightLocation: {fileID: 5385766913870698776}
   PlayerMoods: {fileID: 5941182217501235346}
-  GeraldMoods: {fileID: 5941182217501235346}
-  SebastianMoods: {fileID: 5941182217501235346}
+  GeraldMoods: {fileID: 5979394386717294336}
+  SebastianMoods: {fileID: 3697799267430201851}
   CharlieMoods: {fileID: 5941182217501235346}
   MeganMoods: {fileID: 5941182217501235346}
   AvaMoods: {fileID: 5941182217501235346}
@@ -450,9 +452,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: 0
-  Normal: {fileID: 7482667652216324306, guid: 200702f411ee2534b9055105b25f1e11, type: 3}
-  Suspicious: {fileID: 7482667652216324306, guid: f1e5faa2773863f408e4976199d74888, type: 3}
+  Normal: {fileID: 21300000, guid: 5c7b20b4b0ee27948a341260a2438ad3, type: 3}
+  Suspicious: {fileID: 21300000, guid: 96972092b7212db438cf33887f800c32, type: 3}
   Happy: {fileID: -2413806693520163455, guid: 9de3807992ba6f146aef8e79054fd80e, type: 3}
+--- !u!114 &5979394386717294336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7034202726468025858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddd0e5611d40e5b4ba395d1c4fa9a98d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: 1
+  Normal: {fileID: 21300000, guid: 76d4160c129a12e4c9a364b983ac9d9a, type: 3}
+  Suspicious: {fileID: 21300000, guid: a4c71e6dc57670644815c20bce91f2f3, type: 3}
+  Happy: {fileID: 21300000, guid: 4a15cf14f4b4a2344a0f470fa726388f, type: 3}
+--- !u!114 &3697799267430201851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7034202726468025858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddd0e5611d40e5b4ba395d1c4fa9a98d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: 2
+  Normal: {fileID: 21300000, guid: 6b1e0e8312ee1fc4a8e5685e31ebf8c6, type: 3}
+  Suspicious: {fileID: 21300000, guid: 9864e1d661ea6f243bad8aa28bb259e2, type: 3}
+  Happy: {fileID: 21300000, guid: 443bf8b10a9cd8a40a2211998dfbacf3, type: 3}
 --- !u!1 &8441651068179102444
 GameObject:
   m_ObjectHideFlags: 0
