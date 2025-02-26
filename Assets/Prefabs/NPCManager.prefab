@@ -122,6 +122,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Maddie
       objectReference: {fileID: 0}
+    - target: {fileID: 4236839456426125971, guid: 4857cc948bcb43445b60f5ca7464a377, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8062118361304956274, guid: 4857cc948bcb43445b60f5ca7464a377, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -152,6 +156,10 @@ PrefabInstance:
     - target: {fileID: 2461315665496832470, guid: f1ab328904f66b84583c77f16dc823aa, type: 3}
       propertyPath: m_Name
       value: Bruce
+      objectReference: {fileID: 0}
+    - target: {fileID: 2461315665496832470, guid: f1ab328904f66b84583c77f16dc823aa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4915977011140790803, guid: f1ab328904f66b84583c77f16dc823aa, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -272,6 +280,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Linda
       objectReference: {fileID: 0}
+    - target: {fileID: 6208760412430302706, guid: 59e2a1e0b47b84244b613a97af556c28, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6487276485128166600, guid: 59e2a1e0b47b84244b613a97af556c28, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -351,6 +363,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sebastian
       objectReference: {fileID: 0}
+    - target: {fileID: 7854138435393480570, guid: 18e708e40212fe2419ee62d66a96d315, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -381,6 +397,10 @@ PrefabInstance:
     - target: {fileID: 4734730512677606580, guid: 57fdd6d964bb3144ca5adf0318e73c51, type: 3}
       propertyPath: m_Name
       value: Jeremy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4734730512677606580, guid: 57fdd6d964bb3144ca5adf0318e73c51, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5513755880966284799, guid: 57fdd6d964bb3144ca5adf0318e73c51, type: 3}
       propertyPath: m_LocalPosition.x
@@ -452,6 +472,10 @@ PrefabInstance:
     - target: {fileID: 403890261758895200, guid: 978099fa962e1b64683c1eedf3d45950, type: 3}
       propertyPath: m_Name
       value: Ava
+      objectReference: {fileID: 0}
+    - target: {fileID: 403890261758895200, guid: 978099fa962e1b64683c1eedf3d45950, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2991161227568850138, guid: 978099fa962e1b64683c1eedf3d45950, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -543,6 +567,10 @@ PrefabInstance:
     - target: {fileID: 2675922310990142399, guid: 8cfd39cb03c140d40b3f70a55b6656e9, type: 3}
       propertyPath: m_Name
       value: Megan
+      objectReference: {fileID: 0}
+    - target: {fileID: 2675922310990142399, guid: 8cfd39cb03c140d40b3f70a55b6656e9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3399970475252621365, guid: 8cfd39cb03c140d40b3f70a55b6656e9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -655,6 +683,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Charlie
       objectReference: {fileID: 0}
+    - target: {fileID: 8490495413014769746, guid: b1d5e7d9a67f9be43b57599e41cc0f4a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8588279445122637339, guid: b1d5e7d9a67f9be43b57599e41cc0f4a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -685,6 +717,10 @@ PrefabInstance:
     - target: {fileID: 2004357315155438155, guid: ec8737fd0a7c0f14da20f18ef0ea0439, type: 3}
       propertyPath: m_Name
       value: Gerald
+      objectReference: {fileID: 0}
+    - target: {fileID: 2004357315155438155, guid: ec8737fd0a7c0f14da20f18ef0ea0439, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2260415845632587747, guid: ec8737fd0a7c0f14da20f18ef0ea0439, type: 3}
       propertyPath: m_LocalPosition.x
@@ -768,6 +804,10 @@ PrefabInstance:
     - target: {fileID: 7361875959074796586, guid: 02746c246d949304ab1606f082ee0e3c, type: 3}
       propertyPath: m_Name
       value: Poppy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7361875959074796586, guid: 02746c246d949304ab1606f082ee0e3c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7767818694343986326, guid: 02746c246d949304ab1606f082ee0e3c, type: 3}
       propertyPath: m_LocalPosition.x

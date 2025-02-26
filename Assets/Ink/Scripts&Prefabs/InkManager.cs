@@ -33,6 +33,7 @@ public class InkManager : MonoBehaviour
             GetComponent<DialogueVariables>();
         }
         NPCDialogueManager = FindObjectOfType<NPCDialogueManager>();
+        UI.SetActive(false);
     }
     private void StartStory()
     {
