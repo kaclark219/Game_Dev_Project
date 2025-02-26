@@ -19,7 +19,7 @@ public class FlowerBox : InteractableObj
     {
         if (true && PlantedFlower == "")
         {
-            PlantedFlower = Plant();
+           Plant();
         }
         else if (true && daysToGrow[PlantedFlower] == CycleIndex && !WateredToday)
         {
@@ -32,10 +32,11 @@ public class FlowerBox : InteractableObj
         }
     }
 
-    public string Plant()
+    public void Plant()
     {
         //Open UI and select a plant
-        return "Daisy"; //Placeholder
+        //return "Daisy"; //Placeholder
+        Debug.Log("Plant");
     }
 
     public IEnumerator Water()
