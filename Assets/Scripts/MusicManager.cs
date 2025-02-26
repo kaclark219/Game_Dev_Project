@@ -28,9 +28,9 @@ public class MusicManager : MonoBehaviour
                 speaker2.time = 6;
                 speaker2.Play();
                 primarySpeaker = false;
-            }else if(time <= 6 && ((speaker1.time >= 80 && currentClip == 1) || (speaker1.time >= 70 && currentClip == 2))){
+            }else if(time <= 6 && ((speaker1.time >= 80 && currentClip == 1) || (speaker1.time >= 84 && currentClip == 2))){
                 speaker2.clip = afternoon;
-                speaker2.time = (currentClip == 1) ? 0 : 6;
+                speaker2.time = 0;
                 currentClip = 2;
                 speaker2.Play();
                 primarySpeaker = false;
@@ -41,9 +41,9 @@ public class MusicManager : MonoBehaviour
                 speaker1.time = 6;
                 speaker1.Play();
                 primarySpeaker = true;
-            }else if(time <= 6 && ((speaker2.time >= 80 && currentClip == 1) || (speaker2.time >= 70 && currentClip == 2))){
+            }else if(time <= 6 && ((speaker2.time >= 80 && currentClip == 1) || (speaker2.time >= 84 && currentClip == 2))){
                 speaker1.clip = afternoon;
-                speaker1.time = (currentClip == 1) ? 0 : 6;
+                speaker1.time = 0;
                 currentClip = 2;
                 speaker1.Play();
                 primarySpeaker = true;
