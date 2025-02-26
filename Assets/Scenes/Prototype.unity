@@ -210,6 +210,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5941182217501235346, guid: e5f77980b6ffce54591d8ea3551e8e47, type: 3}
+      propertyPath: Happy
+      value: 
+      objectReference: {fileID: 21300000, guid: d29c4e1c7a83b724ea4163767c535c2f, type: 3}
+    - target: {fileID: 5941182217501235346, guid: e5f77980b6ffce54591d8ea3551e8e47, type: 3}
+      propertyPath: Normal
+      value: 
+      objectReference: {fileID: 21300000, guid: 34b3a9f98de73494098314e22e4b0ab6, type: 3}
     - target: {fileID: 6360180090440216539, guid: e5f77980b6ffce54591d8ea3551e8e47, type: 3}
       propertyPath: m_Name
       value: InkManager
