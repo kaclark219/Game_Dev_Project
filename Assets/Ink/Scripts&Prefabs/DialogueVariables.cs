@@ -73,6 +73,17 @@ public class DialogueVariables : MonoBehaviour
         }
     }
 
+    public void ChangeVariable(string name, System.Object value)
+    {
+        if (variables.ContainsKey(name))
+        {
+            Ink.Runtime.Object v = (Ink.Runtime.Object) value;
+            variables.Remove(name);
+            variables.Add(name, v);
+            Debug.Log("Variable Updated: " + name + " = " + value);
+        }
+    }
+
     // Updates all variable changes to the dictionary to the Ink Story
     private void VariablesToStory(Story story)
     {
