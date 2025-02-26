@@ -154,9 +154,9 @@ MonoBehaviour:
   speaker1: {fileID: 2101067632}
   speaker2: {fileID: 504874984}
   morning: {fileID: 8300000, guid: 3d44bf576f0ae7344b149c6e3ecea230, type: 3}
-  afternoon: {fileID: 8300000, guid: f80094baa0dbe50429ec615498c3d868, type: 3}
+  afternoon: {fileID: 8300000, guid: 6a06fc2e083e4194a8682de370aff34e, type: 3}
   evening: {fileID: 0}
-  time: 0
+  time: 4
 --- !u!4 &536286
 Transform:
   m_ObjectHideFlags: 0
