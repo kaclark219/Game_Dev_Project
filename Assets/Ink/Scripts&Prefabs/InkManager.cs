@@ -9,7 +9,7 @@ using Story = Ink.Runtime.Story;
 
 public class InkManager : MonoBehaviour
 {
-    [SerializeField] private NPCDialogueManager NPCManager;
+    [SerializeField] private NPCDialogueManager NPCDialogueManager;
     [SerializeField] private TextAsset InkJsonAsset;
     [SerializeField] private Story Story;
 
@@ -18,10 +18,11 @@ public class InkManager : MonoBehaviour
 
     [SerializeField] private VerticalLayoutGroup ChoiceButtonContainer;
 
-    [SerializeField] private Button ChoiceButtonPrefab;
+    [SerializeField] private GameObject ChoiceButtonPrefab;
 
     [SerializeField] private DialogueVariables DialogueVariables;
 
+    private NPC currentNPC;
     private Coroutine PrintCoroutine = null;
     private string text;
 
@@ -31,31 +32,36 @@ public class InkManager : MonoBehaviour
         {
             GetComponent<DialogueVariables>();
         }
-        NPCManager = FindObjectOfType<NPCDialogueManager>();    
+        NPCDialogueManager = FindObjectOfType<NPCDialogueManager>();
+        UI.SetActive(false);
     }
     private void StartStory()
     {
+        Debug.Log("Starting Dialogue");
         Story = new Story(InkJsonAsset.text);
         UI.SetActive(true);
 
         // Connects function calls in Ink file with function calls in Unity
-        Story.BindExternalFunction("ShowCharacter", (string name, string position, string mood) => NPCManager.ShowCharacter(name, position, mood));
-        Story.BindExternalFunction("HideCharacter", (string name) => NPCManager.HideCharacter(name));
-        Story.BindExternalFunction("ChangeMood", (string name, string mood) => NPCManager.ChangeMood(name, mood));
+        Story.BindExternalFunction("ShowCharacter", (string name, string position, string mood) => NPCDialogueManager.ShowCharacter(name, position, mood));
+        Story.BindExternalFunction("HideCharacter", (string name) => NPCDialogueManager.HideCharacter(name));
+        Story.BindExternalFunction("ChangeMood", (string name, string mood) => NPCDialogueManager.ChangeMood(name, mood));
         DialogueVariables.StartListening(Story);
         DisplayNextLine();
     }
 
-    public void StartStory(TextAsset newStory)
+    public void StartStory(TextAsset newStory, NPC npc)
     {
+        Debug.Log("Starting Dialogue");
+
+        currentNPC = npc; 
         InkJsonAsset = newStory;
         Story = new Story(InkJsonAsset.text);
         UI.SetActive(true);
 
         // Connects function calls in Ink file with function calls in Unity
-        Story.BindExternalFunction("ShowCharacter", (string name, string position, string mood) => NPCManager.ShowCharacter(name, position, mood));
-        Story.BindExternalFunction("HideCharacter", (string name) => NPCManager.HideCharacter(name));
-        Story.BindExternalFunction("ChangeMood", (string name, string mood) => NPCManager.ChangeMood(name, mood));
+        Story.BindExternalFunction("ShowCharacter", (string name, string position, string mood) => NPCDialogueManager.ShowCharacter(name, position, mood));
+        Story.BindExternalFunction("HideCharacter", (string name) => NPCDialogueManager.HideCharacter(name));
+        Story.BindExternalFunction("ChangeMood", (string name, string mood) => NPCDialogueManager.ChangeMood(name, mood));
         DialogueVariables.StartListening(Story);
         DisplayNextLine();
     }
@@ -63,9 +69,17 @@ public class InkManager : MonoBehaviour
     private void EndStory()
     {
         Debug.Log("Exiting Dialogue");
+
+        // Reset Dialogue 
         Story.ResetState();
         DialogueVariables.StopListening(Story);
         UI.SetActive(false);
+
+        // Clear all Portraits
+        NPCDialogueManager.ClearCharacters();
+
+        // End Interaction for Player
+        currentNPC.EndInteract();
     }
 
     public void DisplayNextLine()
@@ -82,7 +96,6 @@ public class InkManager : MonoBehaviour
         if (Story.canContinue)
         {
             text = Story.Continue();
-            Debug.Log(text);
             text = text?.Trim();
             if (text == "")
             {
@@ -139,9 +152,9 @@ public class InkManager : MonoBehaviour
 
         foreach (Choice choice in Story.currentChoices)
         {
-            Button button = CreateChoiceButton(choice.text);
+            GameObject button = CreateChoiceButton(choice.text);
 
-            button.onClick.AddListener(() => OnClickChoiceButton(choice)); 
+            button.GetComponentsInChildren<Button>()[0].onClick.AddListener(() => OnClickChoiceButton(choice)); 
         }
     }
 
@@ -158,19 +171,19 @@ public class InkManager : MonoBehaviour
     {
         if (ChoiceButtonContainer != null)
         {
-            foreach (Button button in ChoiceButtonContainer.GetComponentsInChildren<Button>())
+            foreach (Transform button in ChoiceButtonContainer.transform)
             {
                 Destroy(button.gameObject);
             }
         }
     }
 
-    private Button CreateChoiceButton(string text)
+    private GameObject CreateChoiceButton(string text)
     {
-        Button button = Instantiate(ChoiceButtonPrefab);
-        button.GetComponentInChildren<TextMeshProUGUI>().text = text;
-        button.transform.SetParent(ChoiceButtonContainer.transform, false); 
-        return button;
+        GameObject buttonObj = Instantiate(ChoiceButtonPrefab);
+        buttonObj.GetComponentInChildren<TextMeshProUGUI>().text = text;
+        buttonObj.transform.SetParent(ChoiceButtonContainer.transform, false);
+        return buttonObj; ;
     }
     #endregion
 
