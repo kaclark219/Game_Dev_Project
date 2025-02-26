@@ -9,7 +9,7 @@ public class FlowerBox : InteractableObj
     bool WateredToday = false;
     private Dictionary<string, int> daysToGrow = new Dictionary<string, int>();
 
-    void Start()
+    public override void Start()
     {
         base.Start();
         daysToGrow.Add("Daisy", 2);
