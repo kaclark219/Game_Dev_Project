@@ -30,5 +30,10 @@ public class PlayerMovement : MonoBehaviour
             }
             anim.SetBool("IsMoving", dir != Vector2.zero);
         }
+        else
+        {
+            anim.SetBool("IsMoving", false);
+            rb.velocity = Vector2.zero;
+        }
     }
 }

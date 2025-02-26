@@ -13,7 +13,7 @@ public class DayNightCycle : MonoBehaviour
 
     public void UpdateLight(int energy)
     {
-        float ratio = (100 - energy) / 100.0f;
+        float ratio = (50 - energy) / 50.0f;
         DayLight.color = DayLightGradient.Evaluate(ratio);
         NightLight.color = NightLightGradient.Evaluate(ratio);
 
