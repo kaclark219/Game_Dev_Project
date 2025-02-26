@@ -182,42 +182,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 268587522127755227, guid: e5f77980b6ffce54591d8ea3551e8e47, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 268587522127755227, guid: e5f77980b6ffce54591d8ea3551e8e47, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 268587522127755227, guid: e5f77980b6ffce54591d8ea3551e8e47, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.35997728
-      objectReference: {fileID: 0}
-    - target: {fileID: 268587522127755227, guid: e5f77980b6ffce54591d8ea3551e8e47, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 268587522127755227, guid: e5f77980b6ffce54591d8ea3551e8e47, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -371
-      objectReference: {fileID: 0}
-    - target: {fileID: 268587522127755227, guid: e5f77980b6ffce54591d8ea3551e8e47, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4290797969028764368, guid: e5f77980b6ffce54591d8ea3551e8e47, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5941182217501235346, guid: e5f77980b6ffce54591d8ea3551e8e47, type: 3}
-      propertyPath: Happy
-      value: 
-      objectReference: {fileID: 21300000, guid: d29c4e1c7a83b724ea4163767c535c2f, type: 3}
-    - target: {fileID: 5941182217501235346, guid: e5f77980b6ffce54591d8ea3551e8e47, type: 3}
-      propertyPath: Normal
-      value: 
-      objectReference: {fileID: 21300000, guid: 34b3a9f98de73494098314e22e4b0ab6, type: 3}
     - target: {fileID: 6360180090440216539, guid: e5f77980b6ffce54591d8ea3551e8e47, type: 3}
       propertyPath: m_Name
       value: InkManager
@@ -287,17 +251,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d56c5af8f15da3c458b429fef80fe329, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &635151074 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4218859400215620059, guid: 26a91b98de179714094b3966759ff6d1, type: 3}
-  m_PrefabInstance: {fileID: 1072834848}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af485ca872a2ee649a6047717ae57d91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1052316373
@@ -845,10 +798,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5728899623276108314, guid: e40394824ffa3f04ab1370017734a45d, type: 3}
-      propertyPath: dayNightCycle
-      value: 
-      objectReference: {fileID: 635151074}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

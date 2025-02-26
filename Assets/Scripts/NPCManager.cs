@@ -26,6 +26,7 @@ public class NPCManager : MonoBehaviour
 
     public void MoveNPCs(int day, int stage)
     {
+        Debug.Log("Moving NPCs to day " + day + " and time " + stage);
         while (coords.Count == 0)
         { }
         foreach (GameObject npc in NPCs)
