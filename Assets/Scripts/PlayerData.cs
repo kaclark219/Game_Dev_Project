@@ -24,6 +24,7 @@ public class PlayerData : MonoBehaviour
     private void Start()
     {
         daySystem = GameObject.Find("GameManager").GetComponent<DaySystem>();
+        dayNightCycle = GameObject.Find("GameManager").GetComponent<DayNightCycle>();
     }
     public int GetMoney()
     {
@@ -42,7 +43,7 @@ public class PlayerData : MonoBehaviour
     {
         energy = startEnergy;
         timeOfDay = 1;
-        dayNightCycle.UpdateLight(energy);
+        dayNightCycle.ResetLight();
     }
     public void ModifyEnergy(int amount)
     {
