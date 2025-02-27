@@ -10,11 +10,16 @@ public class GlobalStateManager : MonoBehaviour
 
     private void Start()
     {
+        dialogueVariables = GameObject.Find("InkManager").GetComponent<DialogueVariables>();
+        playerData = GameObject.Find("Player").GetComponent<PlayerData>();  
+        daySystem = GetComponent<DaySystem>();  
+
         LoadAllData();
     }
 
     public void SaveAllData()
     {
+        Debug.Log("Saving Data...");
         dialogueVariables.SaveData();
         playerData.SaveData();
         daySystem.SaveData();
@@ -23,20 +28,20 @@ public class GlobalStateManager : MonoBehaviour
     public void LoadAllData()
     {
         Debug.Log("Loading Data...");
-        playerData.LoadData();
         dialogueVariables.LoadData();
+        playerData.LoadData();
         daySystem.LoadData();
     }
 
     public void ResetAllData()
     {
+        Debug.Log("Resetting Data Data...");
         dialogueVariables.ResetData();
         playerData.ResetData();
         daySystem.ResetData();
     }
     private void OnApplicationQuit()
     {
-        Debug.Log("Saving Data...");
         SaveAllData();
     }
 }

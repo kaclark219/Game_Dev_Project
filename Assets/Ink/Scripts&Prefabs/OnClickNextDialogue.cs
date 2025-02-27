@@ -22,6 +22,4 @@ public class OnClickNextDialogue : Button
         base.OnPointerClick(eventData);
         InkManager.DisplayNextLine();
     }
-
-    
 }
