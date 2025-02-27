@@ -2228,6 +2228,10 @@ PrefabInstance:
       propertyPath: plint
       value: 
       objectReference: {fileID: 6771952249913378490}
+    - target: {fileID: 6851837587911277984, guid: ec8737fd0a7c0f14da20f18ef0ea0439, type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2890,6 +2894,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -1992348744, guid: 73161d485c04ef7459d64c676867a0f9, type: 3}
     - target: {fileID: 8311761607671232863, guid: e40394824ffa3f04ab1370017734a45d, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8311761607671232863, guid: e40394824ffa3f04ab1370017734a45d, type: 3}
       propertyPath: m_SpriteSortPoint
       value: 0
       objectReference: {fileID: 0}
@@ -2904,6 +2912,10 @@ PrefabInstance:
     - target: {fileID: 8584565063724182912, guid: e40394824ffa3f04ab1370017734a45d, type: 3}
       propertyPath: m_Size.y
       value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584565063724182912, guid: e40394824ffa3f04ab1370017734a45d, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 8584565063724182912, guid: e40394824ffa3f04ab1370017734a45d, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x

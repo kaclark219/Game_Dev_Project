@@ -5,6 +5,7 @@ using UnityEngine;
 public class NPCManager : MonoBehaviour
 {
     [SerializeField] string stage = "1";
+    string currentstage;
     [SerializeField] GameObject[] NPCs;
     string day = "1";
     Dictionary<string, Vector2> coords = new Dictionary<string, Vector2>();
