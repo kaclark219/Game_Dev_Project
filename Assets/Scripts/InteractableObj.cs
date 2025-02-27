@@ -32,7 +32,7 @@ public class InteractableObj : MonoBehaviour
         }
     }
 
-    void Update()
+    public virtual void Update()
     {
         if (active){
             Popup.SetActive(true);

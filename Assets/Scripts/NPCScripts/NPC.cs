@@ -7,7 +7,7 @@ public class NPC : InteractableObj
     [SerializeField] NPCName NPCname;
     NPCPosition dir = NPCPosition.Center;
     NPCMood mood = NPCMood.Happy;
-    Rigidbody2D rb;
+    SpriteRenderer sr;
     [SerializeField] InkManager ink;
     [SerializeField] TextAsset InkJsonAsset;
     PlayerMovement pm;
@@ -17,11 +17,22 @@ public class NPC : InteractableObj
     public override void Start()
     {
         base.Start();
-        rb = GetComponent<Rigidbody2D>();
         pm = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
+        sr = GetComponentInParent<SpriteRenderer>();
     }
 
     public override void OnInteract(){
         ink.StartStory(InkJsonAsset);
+    }
+
+    public override void Update(){
+        base.Update();
+        if(active){
+            if(pm.rb.position.y > transform.position.y){
+                sr.sortingOrder = 4;
+            }else{
+                sr.sortingOrder = 2;
+            }
+        }
     }
 }
