@@ -44,5 +44,10 @@ public class InteractableObj : MonoBehaviour
         }
     }
 
-    public virtual void OnInteract(){}
+    public virtual void OnInteract(){
+        plint.Interact();
+    }
+    public virtual void EndInteract(){
+        plint.EndInteract();
+    }
 }

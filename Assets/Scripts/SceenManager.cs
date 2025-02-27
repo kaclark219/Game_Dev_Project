@@ -12,6 +12,7 @@ public class ScreenManager : MonoBehaviour
     [SerializeField] GameObject credits_screen;
     public TMP_InputField name_input;
     public string player_name = " "; 
+    public string game_scene = " ";
 
     // Start is called before the first frame update
     void Start()
@@ -61,7 +62,7 @@ public class ScreenManager : MonoBehaviour
         tag_finder.name = player_name; 
         DontDestroyOnLoad(tag_finder);
         Debug.Log(player_name);
-        SceneManager.LoadScene("Nandni_Test");
+        SceneManager.LoadScene(game_scene);
     }
 
     //Set Player Name

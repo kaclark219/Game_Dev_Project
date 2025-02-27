@@ -5,7 +5,6 @@ using UnityEngine;
 public class NPCManager : MonoBehaviour
 {
     [SerializeField] string stage = "1";
-    string currentstage;
     [SerializeField] GameObject[] NPCs;
     string day = "1";
     Dictionary<string, Vector2> coords = new Dictionary<string, Vector2>();
@@ -18,14 +17,21 @@ public class NPCManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(stage != currentstage){
-            foreach(GameObject npc in NPCs){
-                npc.transform.position = coords[npc.name + day + stage];
-            }
-            currentstage = stage;
+        //foreach(GameObject npc in NPCs){
+        //    npc.transform.position = coords[npc.name + day + stage];
+        //}
+    }
+
+    public void MoveNPCs(int day, int stage)
+    {
+        Debug.Log("Moving NPCs to day " + day + " and time " + stage);
+        while (coords.Count == 0)
+        { }
+        foreach (GameObject npc in NPCs)
+        {
+            npc.transform.position = coords[npc.name + day.ToString() + stage.ToString()];
         }
     }
 }

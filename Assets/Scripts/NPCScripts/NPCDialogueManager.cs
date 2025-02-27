@@ -110,6 +110,22 @@ public class NPCDialogueManager : MonoBehaviour
         }
     }
 
+    public void ClearCharacters()
+    {
+        foreach (Transform child in leftLocation.transform)
+        {
+            child.GetComponent<NPCPortrait>().Hide();
+        }
+        foreach (Transform child in rightLocation.transform)
+        {
+            child.GetComponent<NPCPortrait>().Hide();
+        }
+        foreach (Transform child in centerLocation.transform)
+        {
+            child.GetComponent<NPCPortrait>().Hide();
+        }
+    }
+
     public void ChangeMood(string name, string mood)
     {
 

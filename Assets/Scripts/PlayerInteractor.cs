@@ -8,11 +8,13 @@ public class PlayerInteractor : MonoBehaviour
     public List<InteractableObj> list = new List<InteractableObj>();
     private Rigidbody2D rb;
     public PlayerMovement pm;
+    private PlayerData playerData;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         pm = GetComponent<PlayerMovement>();
+        playerData = GetComponent<PlayerData>();
     }
 
     void Update(){
@@ -32,5 +34,17 @@ public class PlayerInteractor : MonoBehaviour
             closest.active = true;
             closest.frame = Time.time;
         }
+    }
+
+    public void Interact()
+    {
+        pm.canmove = false;
+        playerData.state = PlayerData.PlayerState.Interacting;
+    }
+
+    public void EndInteract()
+    {
+        pm.canmove = true;
+        playerData.state = PlayerData.PlayerState.Normal;
     }
 }

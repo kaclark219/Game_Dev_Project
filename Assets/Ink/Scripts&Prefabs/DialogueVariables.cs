@@ -75,6 +75,8 @@ public class DialogueVariables : MonoBehaviour
 
     public void ChangeVariable(string name, System.Object value)
     {
+        while (variables.Count == 0) { }
+
         if (variables.ContainsKey(name))
         {
             Ink.Runtime.Object v = (Ink.Runtime.Object) value;

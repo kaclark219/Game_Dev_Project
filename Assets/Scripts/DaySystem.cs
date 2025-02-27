@@ -11,15 +11,17 @@ public class DaySystem : MonoBehaviour
     private const string dayKey = "DAY";
 
     private PlayerData playerData;
+    private NPCManager npcManager;
 
     private void Start()
     {
         playerData = GameObject.Find("Player").GetComponent<PlayerData>();
+        npcManager = GameObject.Find("NPCManager").GetComponent<NPCManager>();
     }
     public void NextDay()
     {
         day++;
-        week = (day % 3) + 1;
+        week = (day % 3);
         LoadDay(day);
     }
 
@@ -33,9 +35,17 @@ public class DaySystem : MonoBehaviour
         return week;
     }
 
-    public void LoadDay(int day)
+    public void ChangeTimeOfDay(int time)
     {
         // move NPCS
+        npcManager.MoveNPCs(day, time);
+    }
+
+    private void LoadDay(int day)
+    {
+        // move NPCS
+        npcManager.MoveNPCs(day, 1);
+
         // reset NPC daily interaction
 
         // update Flowerbox
@@ -56,7 +66,7 @@ public class DaySystem : MonoBehaviour
             day = 1;
         }
 
-        week = (day % 3) + 1;
+        week = (day % 3);
 
         LoadDay(day);
     }
