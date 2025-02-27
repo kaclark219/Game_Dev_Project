@@ -10,7 +10,7 @@ public class PlayerInteractor : MonoBehaviour
     public PlayerMovement pm;
     private PlayerData playerData;
 
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         pm = GetComponent<PlayerMovement>();

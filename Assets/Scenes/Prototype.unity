@@ -667,6 +667,28 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c39d06d638ba2cb4d905e89110e9eea2, type: 3}
+--- !u!114 &1153216940 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4218859400215620059, guid: 26a91b98de179714094b3966759ff6d1, type: 3}
+  m_PrefabInstance: {fileID: 1072834848}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af485ca872a2ee649a6047717ae57d91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1153216941 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1961994125542866198, guid: 26a91b98de179714094b3966759ff6d1, type: 3}
+  m_PrefabInstance: {fileID: 1072834848}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fe06ab5cd3f4ba44946ee7c58c490e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1343682525
 GameObject:
   m_ObjectHideFlags: 0
@@ -798,6 +820,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5728899623276108314, guid: e40394824ffa3f04ab1370017734a45d, type: 3}
+      propertyPath: daySystem
+      value: 
+      objectReference: {fileID: 1153216941}
+    - target: {fileID: 5728899623276108314, guid: e40394824ffa3f04ab1370017734a45d, type: 3}
+      propertyPath: dayNightCycle
+      value: 
+      objectReference: {fileID: 1153216940}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

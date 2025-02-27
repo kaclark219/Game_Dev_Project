@@ -7,13 +7,20 @@ public class PlayerMovement : MonoBehaviour
     private float speed = 4.0f;
     private Rigidbody2D rb;
     [SerializeField] private Vector2 dir;
+    [SerializeField] Transform SpawnLocation;
     Animator anim;
     public bool canmove;
 
-    void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        SpawnLocation = GameObject.Find("Spawn").transform;
+    }
+
+    void Start()
+    {
+        ResetLocation();
         canmove = true;
     }
 
@@ -35,5 +42,13 @@ public class PlayerMovement : MonoBehaviour
             anim.SetBool("IsMoving", false);
             rb.velocity = Vector2.zero;
         }
+    }
+
+    public void ResetLocation()
+    {
+        transform.position = SpawnLocation.position;
+        transform.rotation = SpawnLocation.rotation;
+
+        rb.velocity = Vector2.zero;
     }
 }

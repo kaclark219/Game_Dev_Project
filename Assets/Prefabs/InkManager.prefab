@@ -357,13 +357,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3f1b15dd435c5749b887327c1159895, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NPCDialogueManager: {fileID: 0}
-  InkJsonAsset: {fileID: 4900000, guid: ef5edff4f76f6414e86c74ae951a2b0b, type: 3}
+  npcDialogueManager: {fileID: 8427644275910128803}
+  inkJsonAsset: {fileID: 0}
   UI: {fileID: 4290797969028764368}
-  TextBox: {fileID: 5194023188226748170}
-  ChoiceButtonContainer: {fileID: 3753047508734703370}
-  ChoiceButtonPrefab: {fileID: 4802107501613646800, guid: 7d27a6f0e87402444905bd23e4e9d10d, type: 3}
-  DialogueVariables: {fileID: 5934105558860872651}
+  textBox: {fileID: 5194023188226748170}
+  choiceButtonContainer: {fileID: 3753047508734703370}
+  choiceButtonPrefab: {fileID: 4802107501613646800, guid: 7d27a6f0e87402444905bd23e4e9d10d, type: 3}
+  dialogueVariables: {fileID: 5934105558860872651}
 --- !u!114 &5934105558860872651
 MonoBehaviour:
   m_ObjectHideFlags: 0

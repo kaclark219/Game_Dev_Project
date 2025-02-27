@@ -9,60 +9,57 @@ using Story = Ink.Runtime.Story;
 
 public class InkManager : MonoBehaviour
 {
-    [SerializeField] private NPCDialogueManager NPCDialogueManager;
-    [SerializeField] private TextAsset InkJsonAsset;
-    [SerializeField] private Story Story;
+    [SerializeField] private NPCDialogueManager npcDialogueManager;
+    [SerializeField] private TextAsset inkJsonAsset;
+    [SerializeField] private Story story;
 
     [SerializeField] private GameObject UI;
-    [SerializeField] private TextMeshProUGUI TextBox;
+    [SerializeField] private TextMeshProUGUI textBox;
 
-    [SerializeField] private VerticalLayoutGroup ChoiceButtonContainer;
+    [SerializeField] private VerticalLayoutGroup choiceButtonContainer;
 
-    [SerializeField] private GameObject ChoiceButtonPrefab;
+    [SerializeField] private GameObject choiceButtonPrefab;
 
-    [SerializeField] private DialogueVariables DialogueVariables;
+    [SerializeField] private DialogueVariables dialogueVariables;
 
     private NPC currentNPC;
-    private Coroutine PrintCoroutine = null;
+    private Coroutine printCoroutine = null;
     private string text;
 
-    private void Start()
+    private void Awake()
     {
-        if (DialogueVariables == null)
-        {
-            GetComponent<DialogueVariables>();
-        }
-        NPCDialogueManager = FindObjectOfType<NPCDialogueManager>();
+        dialogueVariables = GetComponent<DialogueVariables>();
+        npcDialogueManager = FindObjectOfType<NPCDialogueManager>();
         UI.SetActive(false);
     }
     private void StartStory()
     {
         Debug.Log("Starting Dialogue");
-        Story = new Story(InkJsonAsset.text);
+        story = new Story(inkJsonAsset.text);
         UI.SetActive(true);
 
         // Connects function calls in Ink file with function calls in Unity
-        Story.BindExternalFunction("ShowCharacter", (string name, string position, string mood) => NPCDialogueManager.ShowCharacter(name, position, mood));
-        Story.BindExternalFunction("HideCharacter", (string name) => NPCDialogueManager.HideCharacter(name));
-        Story.BindExternalFunction("ChangeMood", (string name, string mood) => NPCDialogueManager.ChangeMood(name, mood));
-        DialogueVariables.StartListening(Story);
+        story.BindExternalFunction("ShowCharacter", (string name, string position, string mood) => npcDialogueManager.ShowCharacter(name, position, mood));
+        story.BindExternalFunction("HideCharacter", (string name) => npcDialogueManager.HideCharacter(name));
+        story.BindExternalFunction("ChangeMood", (string name, string mood) => npcDialogueManager.ChangeMood(name, mood));
+        dialogueVariables.StartListening(story);
         DisplayNextLine();
     }
 
-    public void StartStory(TextAsset newStory, NPC npc)
+    public void StartStory(TextAsset newstory, NPC npc)
     {
         Debug.Log("Starting Dialogue");
 
         currentNPC = npc; 
-        InkJsonAsset = newStory;
-        Story = new Story(InkJsonAsset.text);
+        inkJsonAsset = newstory;
+        story = new Story(inkJsonAsset.text);
         UI.SetActive(true);
 
         // Connects function calls in Ink file with function calls in Unity
-        Story.BindExternalFunction("ShowCharacter", (string name, string position, string mood) => NPCDialogueManager.ShowCharacter(name, position, mood));
-        Story.BindExternalFunction("HideCharacter", (string name) => NPCDialogueManager.HideCharacter(name));
-        Story.BindExternalFunction("ChangeMood", (string name, string mood) => NPCDialogueManager.ChangeMood(name, mood));
-        DialogueVariables.StartListening(Story);
+        story.BindExternalFunction("ShowCharacter", (string name, string position, string mood) => npcDialogueManager.ShowCharacter(name, position, mood));
+        story.BindExternalFunction("HideCharacter", (string name) => npcDialogueManager.HideCharacter(name));
+        story.BindExternalFunction("ChangeMood", (string name, string mood) => npcDialogueManager.ChangeMood(name, mood));
+        dialogueVariables.StartListening(story);
         DisplayNextLine();
     }
 
@@ -71,12 +68,12 @@ public class InkManager : MonoBehaviour
         Debug.Log("Exiting Dialogue");
 
         // Reset Dialogue 
-        Story.ResetState();
-        DialogueVariables.StopListening(Story);
+        story.ResetState();
+        dialogueVariables.StopListening(story);
         UI.SetActive(false);
 
         // Clear all Portraits
-        NPCDialogueManager.ClearCharacters();
+        npcDialogueManager.ClearCharacters();
 
         // End Interaction for Player
         currentNPC.EndInteract();
@@ -85,17 +82,17 @@ public class InkManager : MonoBehaviour
     public void DisplayNextLine()
     {
         // Check if a line is being printed
-        if (PrintCoroutine != null)
+        if (printCoroutine != null)
         {
-            StopCoroutine(PrintCoroutine);
-            TextBox.maxVisibleCharacters = text.Length;
-            PrintCoroutine = null;
+            StopCoroutine(printCoroutine);
+            textBox.maxVisibleCharacters = text.Length;
+            printCoroutine = null;
             return;
         }
 
-        if (Story.canContinue)
+        if (story.canContinue)
         {
-            text = Story.Continue();
+            text = story.Continue();
             text = text?.Trim();
             if (text == "")
             {
@@ -105,14 +102,14 @@ public class InkManager : MonoBehaviour
             {
                 ApplyStyling();
 
-                PrintCoroutine = StartCoroutine(PrintLine());
+                printCoroutine = StartCoroutine(PrintLine());
             }
         }
-        else if (Story.currentChoices.Count > 0)
+        else if (story.currentChoices.Count > 0)
         {
             DisplayChoices();
         }
-        else if (!Story.canContinue)
+        else if (!story.canContinue)
         {
             EndStory();
         }
@@ -122,25 +119,24 @@ public class InkManager : MonoBehaviour
     // Coroutine to slowly print each character in a line.
     private IEnumerator PrintLine()
     {
-        TextBox.text = text;
-        TextBox.maxVisibleCharacters = 0;
+        textBox.text = text;
+        textBox.maxVisibleCharacters = 0;
         foreach (char c in text)
         {
-            TextBox.maxVisibleCharacters++;
+            textBox.maxVisibleCharacters++;
             yield return new WaitForSeconds(0.05f);
         }
-        PrintCoroutine = null;
+        printCoroutine = null;
     }
-
 
     private void ApplyStyling()
     {
-        if (Story.currentTags.Contains("thought")) {
-            TextBox.fontStyle = FontStyles.Italic;
+        if (story.currentTags.Contains("thought")) {
+            textBox.fontStyle = FontStyles.Italic;
         }
         else
         {
-            TextBox.fontStyle= FontStyles.Normal;
+            textBox.fontStyle= FontStyles.Normal;
         }
     }
 
@@ -148,9 +144,9 @@ public class InkManager : MonoBehaviour
     // Displays all choices for a dialogue 
     private void DisplayChoices()
     {
-        if (ChoiceButtonContainer.GetComponentsInChildren<Button>().Length > 0) { return; }
+        if (choiceButtonContainer.GetComponentsInChildren<Button>().Length > 0) { return; }
 
-        foreach (Choice choice in Story.currentChoices)
+        foreach (Choice choice in story.currentChoices)
         {
             GameObject button = CreateChoiceButton(choice.text);
 
@@ -161,7 +157,7 @@ public class InkManager : MonoBehaviour
     
     private void OnClickChoiceButton(Choice choice)
     {
-        Story.ChooseChoiceIndex(choice.index);
+        story.ChooseChoiceIndex(choice.index);
         RefreshChoiceView();
         DisplayNextLine();
     }
@@ -169,9 +165,9 @@ public class InkManager : MonoBehaviour
     // Removes all choices
     private void RefreshChoiceView()
     {
-        if (ChoiceButtonContainer != null)
+        if (choiceButtonContainer != null)
         {
-            foreach (Transform button in ChoiceButtonContainer.transform)
+            foreach (Transform button in choiceButtonContainer.transform)
             {
                 Destroy(button.gameObject);
             }
@@ -180,9 +176,9 @@ public class InkManager : MonoBehaviour
 
     private GameObject CreateChoiceButton(string text)
     {
-        GameObject buttonObj = Instantiate(ChoiceButtonPrefab);
+        GameObject buttonObj = Instantiate(choiceButtonPrefab);
         buttonObj.GetComponentInChildren<TextMeshProUGUI>().text = text;
-        buttonObj.transform.SetParent(ChoiceButtonContainer.transform, false);
+        buttonObj.transform.SetParent(choiceButtonContainer.transform, false);
         return buttonObj; ;
     }
     #endregion

@@ -8,12 +8,15 @@ public class GlobalStateManager : MonoBehaviour
     [SerializeField] private PlayerData playerData;
     [SerializeField] private DaySystem daySystem;
 
-    private void Start()
+    private void Awake()
     {
         dialogueVariables = GameObject.Find("InkManager").GetComponent<DialogueVariables>();
         playerData = GameObject.Find("Player").GetComponent<PlayerData>();  
         daySystem = GetComponent<DaySystem>();  
+    }
 
+    private void Start()
+    {
         LoadAllData();
     }
 

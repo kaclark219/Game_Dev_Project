@@ -14,20 +14,26 @@ public class NPC : InteractableObj
 
     private PlayerData playerData;
 
-    // Start is called before the first frame update
-    public override void Start()
+    public bool dailyInteraction;
+
+    private void Awake()
     {
-        base.Start();
         rb = GetComponent<Rigidbody2D>();
         pm = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
         playerData = GameObject.Find("Player").GetComponent<PlayerData>();
         ink = GameObject.Find("InkManager").GetComponent<InkManager>();
+    }
+    public override void Start()
+    {
+        base.Start();
+        dailyInteraction = false;
     }
 
     public override void OnInteract()
     {
         base.OnInteract();
         ink.StartStory(InkJsonAsset, this);
+        dailyInteraction = true;
     }
 
     public override void EndInteract()
