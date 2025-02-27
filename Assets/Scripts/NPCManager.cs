@@ -9,7 +9,8 @@ public class NPCManager : MonoBehaviour
     string day = "1";
     Dictionary<string, Vector2> coords = new Dictionary<string, Vector2>();
 
-    void Start(){
+    private void Awake()
+    {
         string[] lines = Resources.Load<TextAsset>("NPClocations").ToString().Split("\n");
         for(int i = 1; i < lines.Length; i++){
             string[] info = lines[i].Split(",");
@@ -27,11 +28,17 @@ public class NPCManager : MonoBehaviour
     public void MoveNPCs(int day, int stage)
     {
         Debug.Log("Moving NPCs to day " + day + " and time " + stage);
-        while (coords.Count == 0)
-        { }
         foreach (GameObject npc in NPCs)
         {
             npc.transform.position = coords[npc.name + day.ToString() + stage.ToString()];
+        }
+    }
+
+    public void ResetDailyInteraction()
+    {
+        foreach (GameObject npc in NPCs)
+        {
+            npc.GetComponentInChildren<NPC>().dailyInteraction = true;
         }
     }
 }

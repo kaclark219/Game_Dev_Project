@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class DaySystem : MonoBehaviour
@@ -10,13 +11,13 @@ public class DaySystem : MonoBehaviour
 
     private const string dayKey = "DAY";
 
-    private PlayerData playerData;
-    private NPCManager npcManager;
+    [SerializeField] private NPCManager npcManager;
+    [SerializeField] private PlayerMovement playerMovement;
 
-    private void Start()
+    private void Awake()
     {
-        playerData = GameObject.Find("Player").GetComponent<PlayerData>();
         npcManager = GameObject.Find("NPCManager").GetComponent<NPCManager>();
+        playerMovement = GameObject.Find("Player").GetComponent<PlayerMovement>();
     }
     public void NextDay()
     {
@@ -43,10 +44,16 @@ public class DaySystem : MonoBehaviour
 
     private void LoadDay(int day)
     {
+        while (npcManager == null) { }
+
+        // Reset player location
+        playerMovement.ResetLocation();
+
         // move NPCS
         npcManager.MoveNPCs(day, 1);
 
         // reset NPC daily interaction
+        npcManager.ResetDailyInteraction();
 
         // update Flowerbox
     }

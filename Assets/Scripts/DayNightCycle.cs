@@ -29,7 +29,6 @@ public class DayNightCycle : MonoBehaviour
 
     IEnumerator IncrementLight(int energy)
     {
-        Debug.Log(energy + " " + currEnergy);
         while (currEnergy != energy)
         {
             float ratio = (50 - currEnergy) / 50.0f;

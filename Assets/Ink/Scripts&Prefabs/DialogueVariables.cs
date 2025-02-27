@@ -10,7 +10,7 @@ public class DialogueVariables : MonoBehaviour
     private Story GlobalStory;
     private const string saveVariablesKey = "INK_VARIABLES";
 
-    private void Start()
+    private void Awake()
     {
         GlobalStory = new Story(LoadGlobalsJSON.text);
         variables = new Dictionary<string, Ink.Runtime.Object>();
@@ -75,13 +75,10 @@ public class DialogueVariables : MonoBehaviour
 
     public void ChangeVariable(string name, System.Object value)
     {
-        while (variables.Count == 0) { }
-
         if (variables.ContainsKey(name))
         {
-            Ink.Runtime.Object v = (Ink.Runtime.Object) value;
             variables.Remove(name);
-            variables.Add(name, v);
+            variables.Add(name, (Ink.Runtime.Object)value);
             Debug.Log("Variable Updated: " + name + " = " + value);
         }
     }

@@ -21,7 +21,7 @@ public class PlayerData : MonoBehaviour
 
     private int timeOfDay;  // 1: morning, 2: afternoon, 3:evening
 
-    private void Start()
+    private void Awake()
     {
         daySystem = GameObject.Find("GameManager").GetComponent<DaySystem>();
         dayNightCycle = GameObject.Find("GameManager").GetComponent<DayNightCycle>();
