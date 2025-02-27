@@ -20,6 +20,7 @@ public class NPC : InteractableObj
         base.Start();
         rb = GetComponent<Rigidbody2D>();
         pm = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
+        sr = GetComponentInParent<SpriteRenderer>();
         playerData = GameObject.Find("Player").GetComponent<PlayerData>();
         ink = GameObject.Find("InkManager").GetComponent<InkManager>();
     }
