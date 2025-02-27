@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private float speed = 4.0f;
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     [SerializeField] private Vector2 dir;
     [SerializeField] Transform SpawnLocation;
     Animator anim;
